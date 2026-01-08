@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind:wght@700&display=swap');
+        body { font-family: 'Hind', sans-serif; overflow: hidden; }
+
+        /* LIVE TAG */
+        #live-tag {
+            position: absolute; top: 30px; left: 30px;
+            background: #cc0000; color: white; padding: 5px 20px;
+            font-size: 24px; font-weight: 900; border: 2px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            animation: blink 1s infinite;
+        }
+
+        /* LOWER THIRD (Name Box) */
+        #name-box {
+            position: absolute; bottom: 50px; left: 0;
+            display: flex; align-items: center;
+        }
+        #name {
+            background: #ffcc00; color: black; padding: 10px 40px;
+            font-size: 35px; font-weight: 900; border-right: 5px solid white;
+        }
+        #location {
+            background: rgba(0,0,0,0.8); color: white; padding: 10px 30px;
+            font-size: 25px;
+        }
+
+        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.5;} 100% {opacity: 1;} }
+    </style>
+</head>
+<body>
+    <div id="live-tag">LIVE</div>
+    <div id="name-box">
+        <div id="name">REPORTING</div>
+        <div id="location">GROUND ZERO</div>
+    </div>
+
+    <script>
+        // URL से नाम और लोकेशन लेना (e.g. ?name=Rahul&loc=Lucknow)
+        const params = new URLSearchParams(window.location.search);
+        if(params.get('name')) document.getElementById('name').innerText = params.get('name');
+        if(params.get('loc')) document.getElementById('location').innerText = params.get('loc');
+    </script>
+</body>
+</html>
